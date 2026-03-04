@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout de cada item del RecyclerView -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Origen -->
+    <TextView
+        android:id="@+id/tvOrigen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Origen"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <!-- Destino -->
+    <TextView
+        android:id="@+id/tvDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destino"
+        android:textSize="14sp" />
+
+</LinearLayout>
