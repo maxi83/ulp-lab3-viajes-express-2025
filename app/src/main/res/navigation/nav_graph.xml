@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_inicio">
+
+    <!-- Fragmento Inicio -->
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.example.viajesexpress.ui.Inicio.InicioFragment"
+        android:label="Inicio" />
+
+    <!-- Fragmento Perfil -->
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.viajesexpress.ui.perfil.PerfilFragment"
+        android:label="Perfil" />
+
+    <!-- Fragmento Salir -->
+    <!-- Fragmento Salir -->
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.example.viajesexpress.ui.perfil.SalirFragment"
+        android:label="Salir" />
+
+</navigation>
