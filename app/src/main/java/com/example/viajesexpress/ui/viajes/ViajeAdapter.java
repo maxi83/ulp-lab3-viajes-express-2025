@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,16 +14,12 @@ import com.example.viajesexpress.model.Viaje;
 
 import java.util.List;
 
-/**
- * Adapter que conecta la lista de viajes con el RecyclerView
- */
 public class ViajeAdapter extends RecyclerView.Adapter<ViajeAdapter.ViewHolder> {
 
     private List<Viaje> viajes;
     private Context context;
     private LayoutInflater inflater;
 
-    // 🔥 Constructor que recibe los datos
     public ViajeAdapter(List<Viaje> viajes, Context context, LayoutInflater inflater) {
         this.viajes = viajes;
         this.context = context;
@@ -33,7 +30,6 @@ public class ViajeAdapter extends RecyclerView.Adapter<ViajeAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        // Infla el layout de cada item
         View view = inflater.inflate(R.layout.item_viaje, parent, false);
         return new ViewHolder(view);
     }
@@ -41,11 +37,10 @@ public class ViajeAdapter extends RecyclerView.Adapter<ViajeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        // Obtiene el viaje actual
         Viaje viaje = viajes.get(position);
 
-        // Aquí luego pondremos los datos en los TextView
-        // holder.tvOrigen.setText(viaje.getOrigen());
+        holder.tvOrigen.setText("Origen: " + viaje.getOrigen());
+        holder.tvDestino.setText("Destino: " + viaje.getDestino());
     }
 
     @Override
@@ -55,8 +50,14 @@ public class ViajeAdapter extends RecyclerView.Adapter<ViajeAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvOrigen;
+        TextView tvDestino;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            tvOrigen = itemView.findViewById(R.id.tvOrigen);
+            tvDestino = itemView.findViewById(R.id.tvDestino);
         }
     }
 }

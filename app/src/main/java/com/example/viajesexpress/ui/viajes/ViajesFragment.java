@@ -17,25 +17,15 @@ import com.example.viajesexpress.model.Viaje;
 
 import java.util.List;
 
-/*
+/**
  * Fragment que muestra la lista de viajes.
- *
- * Responsabilidad:
- * - Inflar la vista
- * - Observar el ViewModel
- * - Configurar el RecyclerView
- *
- * NO debe contener lógica de negocio.
+ * Mismo patrón que Inmobiliaria.
  */
 public class ViajesFragment extends Fragment {
 
-    // ViewModel del módulo viajes
     private ViajesViewModel mv;
-
-    // ViewBinding para acceder a los componentes del XML sin findViewById
     private FragmentViajesBinding binding;
 
-    // Constructor vacío obligatorio
     public ViajesFragment() {
     }
 
@@ -44,40 +34,35 @@ public class ViajesFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        // Inicializamos el binding (infla el layout automáticamente)
         binding = FragmentViajesBinding.inflate(inflater, container, false);
 
-        // Inicializamos el ViewModel asociado a este Fragment
         mv = new ViewModelProvider(this).get(ViajesViewModel.class);
 
-        // Configuramos el LayoutManager del RecyclerView
-        // LinearLayoutManager muestra los items en forma vertical
+        // Configura el RecyclerView en vertical
         binding.recyclerViajes.setLayoutManager(
                 new LinearLayoutManager(getContext())
         );
 
-        // Observamos la lista de viajes del ViewModel
+        // Observa los datos del ViewModel
         mv.getListaViajes().observe(getViewLifecycleOwner(), new Observer<List<Viaje>>() {
             @Override
             public void onChanged(List<Viaje> viajes) {
 
-                // Cada vez que cambie la lista,
-                // se crea un nuevo Adapter con los datos actualizados
-                ViajeAdapter adapter = new ViajeAdapter(viajes, getContext(), getLayoutInflater());
+                // EXACTAMENTE igual que Inmobiliaria:
+                // crea adapter nuevo y lo asigna
+                ViajeAdapter adapter = new ViajeAdapter(
+                        viajes,
+                        getContext(),
+                        getLayoutInflater()
+                );
 
-                // Se asigna el adapter al RecyclerView
                 binding.recyclerViajes.setAdapter(adapter);
             }
         });
 
-        // Devolvemos la vista raíz
         return binding.getRoot();
     }
 
-    /*
-     * Liberamos el binding cuando la vista se destruye
-     * para evitar memory leaks.
-     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -9,57 +9,61 @@ import com.example.viajesexpress.model.Viaje;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * ViewModel del módulo Viajes.
- *
- * Su responsabilidad es:
- * - Mantener la lista de viajes en memoria.
- * - Sobrevivir a rotaciones de pantalla.
- * - Permitir agregar nuevos viajes dinámicamente.
- */
 public class ViajesViewModel extends ViewModel {
 
-    // Lista observable de viajes.
-    // MutableLiveData permite modificar el valor internamente.
     private MutableLiveData<List<Viaje>> listaViajes;
 
-    /*
-     * Constructor del ViewModel.
-     * Inicializa la lista vacía.
-     */
     public ViajesViewModel() {
+
         listaViajes = new MutableLiveData<>();
 
-        // Inicializamos con una lista vacía (sin hardcodeo)
-        listaViajes.setValue(new ArrayList<>());
+        List<Viaje> lista = new ArrayList<>();
+
+        Viaje v1 = new Viaje();
+        v1.setOrigen("San Luis");
+        v1.setDestino("Córdoba");
+        v1.setFechaHora("12/06/2026");
+        v1.setPrecio(3500);
+        v1.setAsientosDisponibles(3);
+        v1.setEstado("Publicado");
+
+        Viaje v2 = new Viaje();
+        v2.setOrigen("Mendoza");
+        v2.setDestino("San Juan");
+        v2.setFechaHora("15/06/2026");
+        v2.setPrecio(4200);
+        v2.setAsientosDisponibles(2);
+        v2.setEstado("Publicado");
+
+        Viaje v3 = new Viaje();
+        v3.setOrigen("Buenos Aires");
+        v3.setDestino("Rosario");
+        v3.setFechaHora("20/06/2026");
+        v3.setPrecio(5000);
+        v3.setAsientosDisponibles(4);
+        v3.setEstado("Publicado");
+
+        lista.add(v1);
+        lista.add(v2);
+        lista.add(v3);
+
+        listaViajes.setValue(lista);
     }
 
-    /*
-     * Devuelve la lista observable.
-     * El Fragment solo puede observar, no modificar.
-     */
     public LiveData<List<Viaje>> getListaViajes() {
         return listaViajes;
     }
 
-    /*
-     * Método para agregar un nuevo viaje.
-     * Este método será llamado desde la pantalla Crear Viaje.
-     */
     public void agregarViaje(Viaje nuevoViaje) {
 
-        // Obtenemos la lista actual
         List<Viaje> viajesActuales = listaViajes.getValue();
 
-        // Si por alguna razón es null, la inicializamos
         if (viajesActuales == null) {
             viajesActuales = new ArrayList<>();
         }
 
-        // Agregamos el nuevo viaje a la lista
         viajesActuales.add(nuevoViaje);
 
-        // Notificamos a los observadores que cambió la lista
         listaViajes.setValue(viajesActuales);
     }
 }

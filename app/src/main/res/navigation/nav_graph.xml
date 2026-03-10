@@ -10,8 +10,18 @@
         android:label="Inicio" />
 
     <fragment
+        android:id="@+id/nav_viajes"
+        android:name="com.example.viajesexpress.ui.viajes.ViajesFragment"
+        android:label="Viajes" />
+
+    <fragment
         android:id="@+id/nav_perfil"
         android:name="com.example.viajesexpress.ui.perfil.PerfilFragment"
         android:label="Perfil" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.viajesexpress.ui.logout.LogoutFragment"
+        android:label="Salir" />
 
 </navigation>
