@@ -12,7 +12,17 @@
     <fragment
         android:id="@+id/nav_viajes"
         android:name="com.example.viajesexpress.ui.viajes.ViajesFragment"
-        android:label="Viajes" />
+        android:label="Viajes">
+
+        <action
+            android:id="@+id/action_nav_viajes_to_crearViajeFragment"
+            app:destination="@id/crearViajeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/crearViajeFragment"
+        android:name="com.example.viajesexpress.ui.viajes.CrearViajeFragment"
+        android:label="Crear Viaje" />
 
     <fragment
         android:id="@+id/nav_perfil"

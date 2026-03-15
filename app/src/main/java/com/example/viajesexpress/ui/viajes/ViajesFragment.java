@@ -10,17 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.viajesexpress.R;
 import com.example.viajesexpress.databinding.FragmentViajesBinding;
 import com.example.viajesexpress.model.Viaje;
 
 import java.util.List;
 
-/**
- * Fragment que muestra la lista de viajes.
- * Mismo patrón que Inmobiliaria.
- */
 public class ViajesFragment extends Fragment {
 
     private ViajesViewModel mv;
@@ -36,20 +34,17 @@ public class ViajesFragment extends Fragment {
 
         binding = FragmentViajesBinding.inflate(inflater, container, false);
 
-        mv = new ViewModelProvider(this).get(ViajesViewModel.class);
+        // IMPORTANTE: usar requireActivity para compartir el mismo ViewModel
+        mv = new ViewModelProvider(requireActivity()).get(ViajesViewModel.class);
 
-        // Configura el RecyclerView en vertical
         binding.recyclerViajes.setLayoutManager(
                 new LinearLayoutManager(getContext())
         );
 
-        // Observa los datos del ViewModel
         mv.getListaViajes().observe(getViewLifecycleOwner(), new Observer<List<Viaje>>() {
             @Override
             public void onChanged(List<Viaje> viajes) {
 
-                // EXACTAMENTE igual que Inmobiliaria:
-                // crea adapter nuevo y lo asigna
                 ViajeAdapter adapter = new ViajeAdapter(
                         viajes,
                         getContext(),
@@ -57,6 +52,13 @@ public class ViajesFragment extends Fragment {
                 );
 
                 binding.recyclerViajes.setAdapter(adapter);
+            }
+        });
+
+        binding.btnCrearViaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_viajes_to_crearViajeFragment);
             }
         });
 
