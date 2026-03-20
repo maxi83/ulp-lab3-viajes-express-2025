@@ -21,34 +21,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // NavHostFragment
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.nav_host_fragment_content_main);
 
         NavController navController = navHostFragment.getNavController();
 
-        // Configuración de pantallas principales
         appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_inicio,
                 R.id.nav_viajes,
+                R.id.misReservasFragment,
                 R.id.nav_perfil
         )
                 .setOpenableLayout(drawer)
                 .build();
 
-        // Conecta Toolbar con navegación
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        // Conecta menú lateral con navegación
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 

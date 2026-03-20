@@ -20,7 +20,7 @@ import com.example.viajesexpress.model.Viaje;
 public class CrearViajeFragment extends Fragment {
 
     private ViajesViewModel mv;
-    private EditText etOrigen, etDestino, etFecha;
+    private EditText etOrigen, etDestino, etFecha, etPrecio, etAsientos;
 
     public CrearViajeFragment() {
     }
@@ -37,26 +37,34 @@ public class CrearViajeFragment extends Fragment {
         etOrigen = view.findViewById(R.id.etOrigen);
         etDestino = view.findViewById(R.id.etDestino);
         etFecha = view.findViewById(R.id.etFecha);
+        etPrecio = view.findViewById(R.id.etPrecio);
+        etAsientos = view.findViewById(R.id.etAsientos);
 
         view.findViewById(R.id.btnGuardarViaje).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String origen = etOrigen.getText().toString();
-                String destino = etDestino.getText().toString();
-                String fecha = etFecha.getText().toString();
+                String origen = etOrigen.getText().toString().trim();
+                String destino = etDestino.getText().toString().trim();
+                String fecha = etFecha.getText().toString().trim();
+                String precioTexto = etPrecio.getText().toString().trim();
+                String asientosTexto = etAsientos.getText().toString().trim();
 
-                if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(fecha)) {
+                if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(fecha)
+                        || TextUtils.isEmpty(precioTexto) || TextUtils.isEmpty(asientosTexto)) {
                     Toast.makeText(getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                double precio = Double.parseDouble(precioTexto);
+                int asientos = Integer.parseInt(asientosTexto);
 
                 Viaje viaje = new Viaje();
                 viaje.setOrigen(origen);
                 viaje.setDestino(destino);
                 viaje.setFechaHora(fecha);
-                viaje.setPrecio(0);
-                viaje.setAsientosDisponibles(0);
+                viaje.setPrecio(precio);
+                viaje.setAsientosDisponibles(asientos);
                 viaje.setEstado("Publicado");
 
                 mv.agregarViaje(viaje);

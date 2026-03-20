@@ -11,6 +11,10 @@
         android:title="Viajes" />
 
     <item
+        android:id="@+id/misReservasFragment"
+        android:title="Mis Reservas" />
+
+    <item
         android:id="@+id/nav_perfil"
         android:title="Perfil" />
 

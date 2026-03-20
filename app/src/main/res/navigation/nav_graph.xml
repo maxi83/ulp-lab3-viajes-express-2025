@@ -2,7 +2,26 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_inicio">
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.viajesexpress.ui.login.LoginFragment"
+        android:label="Login">
+
+        <action
+            android:id="@+id/action_loginFragment_to_nav_inicio"
+            app:destination="@id/nav_inicio" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.viajesexpress.ui.login.RegistroFragment"
+        android:label="Registro" />
 
     <fragment
         android:id="@+id/nav_inicio"
@@ -17,12 +36,30 @@
         <action
             android:id="@+id/action_nav_viajes_to_crearViajeFragment"
             app:destination="@id/crearViajeFragment" />
+
+        <action
+            android:id="@+id/action_nav_viajes_to_reservaFragment"
+            app:destination="@id/reservaFragment" />
+
+        <action
+            android:id="@+id/action_nav_viajes_to_misReservasFragment"
+            app:destination="@id/misReservasFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/crearViajeFragment"
         android:name="com.example.viajesexpress.ui.viajes.CrearViajeFragment"
         android:label="Crear Viaje" />
+
+    <fragment
+        android:id="@+id/reservaFragment"
+        android:name="com.example.viajesexpress.ui.reserva.ReservaFragment"
+        android:label="Reservar Viaje" />
+
+    <fragment
+        android:id="@+id/misReservasFragment"
+        android:name="com.example.viajesexpress.ui.reserva.MisReservasFragment"
+        android:label="Mis Reservas" />
 
     <fragment
         android:id="@+id/nav_perfil"

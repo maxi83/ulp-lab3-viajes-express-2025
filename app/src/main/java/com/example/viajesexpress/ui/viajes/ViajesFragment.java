@@ -34,7 +34,6 @@ public class ViajesFragment extends Fragment {
 
         binding = FragmentViajesBinding.inflate(inflater, container, false);
 
-        // IMPORTANTE: usar requireActivity para compartir el mismo ViewModel
         mv = new ViewModelProvider(requireActivity()).get(ViajesViewModel.class);
 
         binding.recyclerViajes.setLayoutManager(
@@ -48,7 +47,8 @@ public class ViajesFragment extends Fragment {
                 ViajeAdapter adapter = new ViajeAdapter(
                         viajes,
                         getContext(),
-                        getLayoutInflater()
+                        getLayoutInflater(),
+                        mv
                 );
 
                 binding.recyclerViajes.setAdapter(adapter);

@@ -7,58 +7,42 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_margin="8dp"
-    android:background="#E3F2FD">
+    android:background="#E8F5E9">
 
     <TextView
-        android:id="@+id/tvOrigen"
+        android:id="@+id/tvIdViaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Origen"
+        android:text="Id viaje"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#0D47A1" />
+        android:textSize="17sp"
+        android:textColor="#1B5E20" />
 
     <TextView
-        android:id="@+id/tvDestino"
+        android:id="@+id/tvCantidadAsientos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Destino"
-        android:textSize="16sp"
+        android:text="Cantidad de asientos"
+        android:textSize="15sp"
         android:textColor="#000000"
         android:layout_marginTop="6dp" />
 
     <TextView
-        android:id="@+id/tvFecha"
+        android:id="@+id/tvEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:layout_marginTop="6dp" />
+
+    <TextView
+        android:id="@+id/tvFechaReserva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha"
         android:textSize="15sp"
         android:textColor="#000000"
         android:layout_marginTop="6dp" />
-
-    <TextView
-        android:id="@+id/tvPrecio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Precio"
-        android:textSize="15sp"
-        android:textColor="#000000"
-        android:layout_marginTop="6dp" />
-
-    <TextView
-        android:id="@+id/tvAsientos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Asientos"
-        android:textSize="15sp"
-        android:textColor="#000000"
-        android:layout_marginTop="6dp" />
-
-    <Button
-        android:id="@+id/btnReservar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reservar"
-        android:layout_marginTop="12dp" />
 
 </LinearLayout>
