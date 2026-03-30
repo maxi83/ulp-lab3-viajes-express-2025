@@ -2,26 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.viajesexpress.ui.login.LoginFragment"
-        android:label="Login">
-
-        <action
-            android:id="@+id/action_loginFragment_to_nav_inicio"
-            app:destination="@id/nav_inicio" />
-
-        <action
-            android:id="@+id/action_loginFragment_to_registroFragment"
-            app:destination="@id/registroFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/registroFragment"
-        android:name="com.example.viajesexpress.ui.login.RegistroFragment"
-        android:label="Registro" />
+    app:startDestination="@id/nav_inicio">
 
     <fragment
         android:id="@+id/nav_inicio"
@@ -40,10 +21,6 @@
         <action
             android:id="@+id/action_nav_viajes_to_reservaFragment"
             app:destination="@id/reservaFragment" />
-
-        <action
-            android:id="@+id/action_nav_viajes_to_misReservasFragment"
-            app:destination="@id/misReservasFragment" />
     </fragment>
 
     <fragment

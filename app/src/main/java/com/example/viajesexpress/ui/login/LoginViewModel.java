@@ -17,13 +17,12 @@ public class LoginViewModel extends ViewModel {
         return loginExitoso;
     }
 
-    // Lógica simple de validación (sin API todavía)
     public void validarLogin(String email, String password) {
         if (email.isEmpty() || password.isEmpty()) {
             mensajeError.setValue("Por favor, complete todos los campos.");
             loginExitoso.setValue(false);
         } else if (email.equals("admin@ulp.edu.ar") && password.equals("1234")) {
-            mensajeError.setValue("Inicio de sesión exitoso.");
+            mensajeError.setValue("");
             loginExitoso.setValue(true);
         } else {
             mensajeError.setValue("Credenciales incorrectas.");
