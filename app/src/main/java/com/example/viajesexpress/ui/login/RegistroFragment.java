@@ -1,18 +1,18 @@
 package com.example.viajesexpress.ui.login;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.viajesexpress.R;
 
@@ -23,6 +23,8 @@ public class RegistroFragment extends Fragment {
     private EditText etPasswordRegistro;
     private Button btnRegistrarse;
     private TextView tvMensajeRegistro;
+    private TextView tvVolverLogin;
+    private RegistroViewModel registroViewModel;
 
     public RegistroFragment() {
     }
@@ -39,6 +41,20 @@ public class RegistroFragment extends Fragment {
         etPasswordRegistro = view.findViewById(R.id.etPasswordRegistro);
         btnRegistrarse = view.findViewById(R.id.btnRegistrarse);
         tvMensajeRegistro = view.findViewById(R.id.tvMensajeRegistro);
+        tvVolverLogin = view.findViewById(R.id.tvVolverLogin);
+
+        registroViewModel = new ViewModelProvider(this).get(RegistroViewModel.class);
+
+        registroViewModel.getMensajeRegistro().observe(getViewLifecycleOwner(), mensaje -> {
+            tvMensajeRegistro.setText(mensaje);
+        });
+
+        registroViewModel.getRegistroExitoso().observe(getViewLifecycleOwner(), exito -> {
+            if (exito) {
+                Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +64,13 @@ public class RegistroFragment extends Fragment {
                 String email = etEmailRegistro.getText().toString().trim();
                 String password = etPasswordRegistro.getText().toString().trim();
 
-                if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    tvMensajeRegistro.setText("Complete todos los campos.");
-                    return;
-                }
+                registroViewModel.validarRegistro(nombre, email, password);
+            }
+        });
 
-                tvMensajeRegistro.setText("Usuario registrado correctamente.");
-                Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
-
+        tvVolverLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         });

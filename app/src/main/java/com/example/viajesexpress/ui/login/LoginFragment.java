@@ -29,6 +29,9 @@ public class LoginFragment extends Fragment {
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
+        binding.etEmail.setText("admin@ulp.edu.ar");
+        binding.etPassword.setText("1234");
+
         loginViewModel.getMensajeError().observe(getViewLifecycleOwner(), mensaje -> {
             binding.tvError.setText(mensaje);
         });

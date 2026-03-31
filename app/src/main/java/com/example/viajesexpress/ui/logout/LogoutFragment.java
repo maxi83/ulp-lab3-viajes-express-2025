@@ -1,5 +1,6 @@
 package com.example.viajesexpress.ui.logout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.viajesexpress.LoginActivity;
 import com.example.viajesexpress.R;
 
 public class LogoutFragment extends Fragment {
 
     public LogoutFragment() {
-        // Constructor vacío obligatorio
     }
 
     @Override
@@ -22,10 +23,10 @@ public class LogoutFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        // Infla el layout fragment_logout.xml
         View view = inflater.inflate(R.layout.fragment_logout, container, false);
 
-        // Cierra la aplicación
+        Intent intent = new Intent(requireActivity(), LoginActivity.class);
+        startActivity(intent);
         requireActivity().finish();
 
         return view;
